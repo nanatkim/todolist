@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% if app.user != null %}
+        <div class="container-fluid">
+            <h2 class="page-header">2do</h2>
+            <div class="row">
+                <div class="col-md-1 col-md-offset-11"><a href="/todo/create/{{ app.user.id }}" class="btn btn-success">Add</a>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                {% for todo in todos %}
+                    {# Usuário ADMIN pode ver todos os 2dos criados #}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div class="col-md-3">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="" href="/todo/details/{{ todo.id }}">{{ todo.name }}</a>
+                                    </h3>
+                                </div>
+                                <div class="panel-body">
+                                    {{ todo.dueDate|date('F, d/Y - h:i a') }}
+                                </div>
+                            </div>
+                        </div>
+                        {# Usuário logado vê apenas os 2dos que criou #}
+                    {% elseif todo.idusr == app.user.id %}
+                        <div class="col-md-3">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="" href="/todo/details/{{ todo.id }}">{{ todo.name }}</a>
+                                    </h3>
+                                </div>
+                                <div class="panel-body">
+                                    {{ todo.dueDate|date('F, d/Y - h:i a') }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    {# Usuário não logado, não pode ver nada #}
+    {% if app.user == null %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="jumbotron">
+                        <h3 align="center" class="pag-header">Você precisa estar logado para ver os Todo's</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <a href="/login" class="btn btn-primary">Login</a>
+                    <br>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %} 
+{% block body %}
+<table class="table">
+    <h2 class="page-header">List</h2>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th>Role</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for usr in users %}
+        <tr>
+            <th scope="row">{{usr.id}}</th>
+            <td>{{usr.name}}</td>
+            <td>{{usr.email}}</td>
+            <td>{{usr.role}}</td>
+            <td>
+                <a href="/user/details/{{usr.id}}" class="btn btn-primary">View</a>
+                {% if app.user != null %}
+                <a href="/user/edit/{{usr.id}}" class="btn btn-outline-secondary">Edit</a>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                <a href="/user/delete/{{usr.id}}" class="btn btn-danger">Delete</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
