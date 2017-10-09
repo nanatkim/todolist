@@ -45,28 +45,7 @@
                 </li>
             </ul>
         </div>
-        {% if app.user != null %}
-        <div class="col-md-2 col-md-offset-2">
-            <div class="dropdown col-md-offset-6">
-                <a class="dropbtn"><i id="social-user" class="fa fa-meh-o fa-1x social"></i></a>
-                <div class="dropdown-content dropdown-menu dropdown-menu-left">
-                    <a class="dropdown-item" href="/user/details/{{app.user.id}}">Profile</a>
-                    <a class="dropdown-item" href="/logout">Logout</a>
-                </div>
-            </div>
-        </div>
-        {% elseif app.user == null %}
-        <div class="col-md-3 col-md-offset-1">
-            <ul class="nav navbar-nav nav-pills">
-                <li>
-                    <a href="/login"><button class="btn btn-primary">Log In</button></a>
-                </li>
-                <li>
-                    <a href="/register"><button class="btn btn-outline-success">Sign Up</button></a>
-                </li>
-            </ul>
-        </div>
-        {% endif %}
+        {{ render (controller('AppBundle:Idx:if')) }}
     </nav>
 
     <div class="container">

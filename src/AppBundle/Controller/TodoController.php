@@ -8,12 +8,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-
 class TodoController extends Controller
 {
     /**
@@ -48,10 +42,6 @@ class TodoController extends Controller
             $due_date = $form['due_date']->getData();
 
             $now = new\DateTime('now');
-
-            $user = $this->getDoctrine()
-                ->getRepository('AppBundle:User')
-                ->find($id);
 
             $todo->setName($name);
             $todo->setCategory($category);
@@ -99,23 +89,7 @@ class TodoController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $name = $form['name']->getData();
-            $category = $form['category']->getData();
-            $description = $form['description']->getData();
-            $priority = $form['priority']->getData();
-            $due_date = $form['due_date']->getData();
-
-            $now = new\DateTime('now');
-
             $em = $this->getDoctrine()->getManager();
-            $todo = $em->getRepository('AppBundle:Todo')->find($id);
-
-            $todo->setName($name);
-            $todo->setCategory($category);
-            $todo->setDescription($description);
-            $todo->setPriority($priority);
-            $todo->setDueDate($due_date);
-            $todo->setCreateDate($now);
 
             $em->flush();
 
