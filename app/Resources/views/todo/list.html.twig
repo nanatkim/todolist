@@ -4,10 +4,13 @@
         <div class="container-fluid">
             <h2 class="page-header">2do</h2>
             <div class="row">
-                <div class="col-md-1 col-md-offset-11"><a href="/todo/create/{{ app.user.id }}" class="btn btn-success">Add</a>
+                <div class="col-md-1 col-md-offset-11">
+                    <a href="/todo/create/{{ app.user.id }}">
+                        <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
-            <hr>
+
             <div class="row">
                 {% for todo in todos %}
                     {# Usuário ADMIN pode ver todos os 2dos criados #}
@@ -28,13 +31,26 @@
                     {% elseif todo.idusr == app.user.id %}
                         <div class="col-md-3">
                             <div class="panel panel-primary">
+                                <a href="/todo/details/{{ todo.id }}">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">
-                                        <a class="" href="/todo/details/{{ todo.id }}">{{ todo.name }}</a>
-                                    </h3>
+                                    <li class="list-group-item active">{{ todo.name }}</li>
                                 </div>
+                                </a>
                                 <div class="panel-body">
-                                    {{ todo.dueDate|date('F, d/Y - h:i a') }}
+                                    <span class="max-lines">
+                                        <p>
+                                        {{ todo.description }}
+                                    </p>
+                                    </span>
+                                </div>
+                                <div class="panel-footer">
+                                    <a class="aff" href="/todo/edit/{{ todo.id }}">
+                                        <i id="icon-edit" class="fa fa-pencil fa-2x social"
+                                           aria-hidden="true"></i>
+                                    </a>
+                                    <a class="col-sm-offset-6 aff" href="todo/delete">
+                                        <i id="icon-del" class="fa fa-trash-o fa-2x social" aria-hidden="true"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>

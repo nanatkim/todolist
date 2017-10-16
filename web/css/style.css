@@ -2,8 +2,48 @@ body {
     padding-top: 90px;
 }
 
+.max-lines{
+    display: block; /* or inline-block */
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 12.2em;
+    line-height: 1.8em;
+    text-align:justify;
+}
+
+.break {
+    white-space: pre-wrap;
+}
+.panel-body {
+    height: 200px;
+}
+
 .pull-right {
     float: right !important;
+}
+
+a{
+    text-align: center;
+}
+
+a:hover{
+    text-decoration: none !important;
+}
+
+#icon-del:hover{
+    color: #FF261B;
+}
+
+#icon-logo{
+    color:#444444;
+}
+
+/**/
+/* footer */
+.footer {
+    width: 100%;
+    bottom: 0;
 }
 
 /**/
@@ -22,6 +62,7 @@ body {
     -o-transform: scale(1.1);
 }
 .social {
+
     -webkit-transform: scale(0.8);
     /* Browser Variations: */
     
