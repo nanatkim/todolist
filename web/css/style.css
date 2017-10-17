@@ -15,7 +15,7 @@ body {
 .break {
     white-space: pre-wrap;
 }
-.panel-body {
+.panel-body todo {
     height: 200px;
 }
 

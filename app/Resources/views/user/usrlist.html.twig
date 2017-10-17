@@ -20,7 +20,7 @@
             <td>{{usr.role}}</td>
             <td>
                 <a href="/user/details/{{usr.id}}" class="btn btn-primary">View</a>
-                {% if app.user != null %}
+                {% if (app.user != null) and (app.user.id == usr.id) or is_granted('ROLE_ADMIN') %}
                 <a href="/user/edit/{{usr.id}}" class="btn btn-outline-secondary">Edit</a>
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}

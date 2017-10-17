@@ -7,6 +7,9 @@ use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\FormBuilder;
 
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -30,7 +33,7 @@ class UserController extends Controller
      * @Route("/user/edit/{id}", name="user_edit")
      */
      public function editUsrAction(Request $request,$id)
-     {  
+     {
         $user = $this->getDoctrine()
         ->getRepository('AppBundle:User')
         ->find($id);
@@ -52,7 +55,7 @@ class UserController extends Controller
             $user->setPassword($password);
 
             $em->flush();
-            
+
             $this->addFlash(
                 'notice',
                 'User Edited!'
@@ -60,7 +63,7 @@ class UserController extends Controller
 
             return $this->redirectToRoute('user_list');
         }
-        return $this->render('auth/register.html.twig',[
+        return $this->render('user/usredit.html.twig',[
             'user'=>$user,
             'form'=>$form->createView()
         ]);
@@ -119,7 +122,7 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('user_list',[
+            return $this->redirectToRoute('todo_list',[
                 'user'=>$user
                 ]);
         }

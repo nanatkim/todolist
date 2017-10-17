@@ -23,13 +23,22 @@ class TodoType extends AbstractType
     {
         $builder
             ->add('name',TextType::class,[
-                'attr' => ['class' => 'form-control', 'style' => 'margin-bottom:15px']
+                'attr' => [
+                    'class' => 'form-control',
+                    'style' => 'margin-bottom:15px'
+                ]
             ])
             ->add('category',TextType::class,[
-                'attr' => ['class' => 'form-control', 'style' => 'margin-bottom:15px']
+                'attr' => [
+                    'class' => 'form-control',
+                    'style' => 'margin-bottom:15px'
+                ]
             ])
             ->add('description',TextareaType::class,[
-                'attr' => ['class' => 'form-control', 'style' => 'margin-bottom:15px']
+                'attr' => [
+                    'class' => 'form-control',
+                    'style' => 'margin-bottom:15px'
+                ]
             ])
             ->add('priority',ChoiceType::class,[
                 'choices' => [
