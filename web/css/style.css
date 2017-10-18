@@ -1,5 +1,5 @@
 body {
-    padding-top: 90px;
+    padding-top: 100px;
 }
 
 .max-lines{
@@ -7,7 +7,7 @@ body {
     text-overflow: ellipsis;
     word-wrap: break-word;
     overflow: hidden;
-    max-height: 12.2em;
+    max-height: 10.8em;
     line-height: 1.8em;
     text-align:justify;
 }
@@ -15,8 +15,8 @@ body {
 .break {
     white-space: pre-wrap;
 }
-.panel-body todo {
-    height: 200px;
+.panel-body.todo {
+    height: 150px;
 }
 
 .pull-right {
