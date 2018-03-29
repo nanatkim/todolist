@@ -52,7 +52,7 @@ class TodoType extends AbstractType
                 ]])
             ->add('due_date',DateTimeType::class,[
                 'attr'=>[
-                    'style' => 'margin-bottom:15px;15px;display: flex'
+                    'style' => 'margin-bottom:15px;display:flex;'
                 ]
             ])
             ->add('submit',SubmitType::class,[

@@ -35,19 +35,7 @@ class TodoController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $name = $form['name']->getData();
-            $category = $form['category']->getData();
-            $description = $form['description']->getData();
-            $priority = $form['priority']->getData();
-            $due_date = $form['due_date']->getData();
-
             $now = new\DateTime('now');
-
-            $todo->setName($name);
-            $todo->setCategory($category);
-            $todo->setDescription($description);
-            $todo->setPriority($priority);
-            $todo->setDueDate($due_date);
             $todo->setCreateDate($now);
             $todo->setIdusr($id);
 
@@ -78,11 +66,6 @@ class TodoController extends Controller
 
         $now = new\DateTime('now');
 
-        $todo->getName();
-        $todo->getCategory();
-        $todo->getDescription();
-        $todo->getPriority();
-        $todo->getDueDate();
         $todo->setCreateDate($now);
 
         $form = $this->createForm(TodoType::class, $todo);
